@@ -1,0 +1,6 @@
+{
+  "name": "Miraj Views Store",
+  "description": "Social media video promotion storefront for YouTube Views, Instagram Views, and Facebook Views packages with instant WhatsApp order dispatch.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
