@@ -46,7 +46,7 @@ const STORAGE_KEY_QR_LOCKED = 'miraj_smm_qr_locked_v1';
 const OWNER_PIN = '6002191384';
 
 export function PaymentQrCode({
-  sizeClassName = 'w-64 h-64 sm:w-72 sm:h-72',
+  sizeClassName = 'w-48 h-48 sm:w-52 sm:h-52',
   showUploadControl = true,
 }: {
   sizeClassName?: string;
@@ -146,7 +146,7 @@ export function PaymentQrCode({
   return (
     <div className="flex flex-col items-center">
       <div
-        className={`relative rounded-2xl overflow-hidden border-2 border-amber-300 shadow-sm bg-[#ecc578] p-3 flex items-center justify-center ${sizeClassName}`}
+        className={`relative rounded-xl overflow-hidden border border-slate-300 shadow-xs bg-white p-2.5 flex items-center justify-center ${sizeClassName}`}
       >
         {customQrDataUrl ? (
           <img
@@ -161,7 +161,7 @@ export function PaymentQrCode({
             role="img"
             aria-label="MIRAJ SMM STORE Payment QR Code"
           >
-            <rect x="0" y="0" width="39" height="39" fill="#ecc578" />
+            <rect x="0" y="0" width="39" height="39" fill="#ffffff" />
             <g transform="translate(1, 1)">
               {QR_MATRIX_37.map((rowStr, rIdx) =>
                 rowStr.split('').map((cell, cIdx) => {
@@ -173,19 +173,19 @@ export function PaymentQrCode({
                       y={rIdx}
                       width={1.03}
                       height={1.03}
-                      fill="#080808"
+                      fill="#000000"
                     />
                   );
                 })
               )}
-              <circle cx="18.5" cy="18.5" r="4.6" fill="#141414" />
+              <circle cx="18.5" cy="18.5" r="4.6" fill="#111111" />
               <path
                 d="M16.2 15.6 L17.7 15.6 L20.8 21.4 L19.3 21.4 Z"
-                fill="#f59e0b"
+                fill="#ffffff"
               />
               <path
                 d="M19.3 15.6 L20.8 15.6 L17.7 21.4 L16.2 21.4 Z"
-                fill="#fbbf24"
+                fill="#ffffff"
               />
             </g>
           </svg>
@@ -193,7 +193,7 @@ export function PaymentQrCode({
       </div>
 
       {showUploadControl && (
-        <div className="mt-4 flex flex-col items-center gap-3">
+        <div className="mt-2.5 flex flex-col items-center gap-2 w-full">
           <input
             ref={fileInputRef}
             type="file"
@@ -203,13 +203,13 @@ export function PaymentQrCode({
           />
 
           {!isLockedForCustomers ? (
-            <div className="flex flex-wrap items-center justify-center gap-3">
+            <div className="flex flex-wrap items-center justify-center gap-2">
               <button
                 type="button"
                 onClick={() => fileInputRef.current?.click()}
-                className="min-h-[48px] px-5 py-2.5 text-base sm:text-lg font-extrabold text-white bg-blue-600 hover:bg-blue-700 rounded-xl inline-flex items-center gap-2 cursor-pointer transition-colors"
+                className="min-h-[38px] px-3.5 py-1.5 text-xs sm:text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-lg inline-flex items-center gap-1.5 cursor-pointer transition-colors"
               >
-                <Upload className="w-5 h-5" />
+                <Upload className="w-4 h-4" />
                 <span>{customQrDataUrl ? 'Change QR Code' : 'Upload My QR Code'}</span>
               </button>
 
@@ -218,18 +218,18 @@ export function PaymentQrCode({
                   <button
                     type="button"
                     onClick={handleLockQr}
-                    className="min-h-[48px] px-5 py-2.5 text-base sm:text-lg font-extrabold text-emerald-950 bg-emerald-100 hover:bg-emerald-200 border border-emerald-300 rounded-xl inline-flex items-center gap-2 cursor-pointer transition-colors"
+                    className="min-h-[38px] px-3.5 py-1.5 text-xs sm:text-sm font-bold text-emerald-900 bg-emerald-100 hover:bg-emerald-200 border border-emerald-300 rounded-lg inline-flex items-center gap-1.5 cursor-pointer transition-colors"
                   >
-                    <Lock className="w-5 h-5" />
-                    <span>Save & Lock for Customers</span>
+                    <Lock className="w-3.5 h-3.5" />
+                    <span>Save & Lock</span>
                   </button>
 
                   <button
                     type="button"
                     onClick={handleResetQr}
-                    className="min-h-[48px] px-4 py-2.5 text-base font-bold text-slate-700 hover:text-red-600 bg-slate-100 rounded-xl inline-flex items-center gap-1.5 cursor-pointer"
+                    className="min-h-[38px] px-3 py-1.5 text-xs font-semibold text-slate-700 hover:text-red-600 bg-slate-100 rounded-lg inline-flex items-center gap-1 cursor-pointer"
                   >
-                    <RotateCcw className="w-5 h-5" />
+                    <RotateCcw className="w-3.5 h-3.5" />
                     <span>Reset</span>
                   </button>
                 </>
@@ -241,13 +241,13 @@ export function PaymentQrCode({
                 <button
                   type="button"
                   onClick={() => setShowPinPrompt(true)}
-                  className="text-sm sm:text-base font-bold text-slate-600 hover:text-slate-900 inline-flex items-center gap-1.5 cursor-pointer py-1.5"
+                  className="text-xs font-medium text-slate-500 hover:text-slate-800 inline-flex items-center gap-1 cursor-pointer py-1"
                 >
-                  <Unlock className="w-4 h-4" />
+                  <Unlock className="w-3.5 h-3.5" />
                   <span>Owner Edit QR</span>
                 </button>
               ) : (
-                <form onSubmit={handleUnlockSubmit} className="flex items-center gap-2 mt-1.5">
+                <form onSubmit={handleUnlockSubmit} className="flex items-center gap-1.5 mt-1">
                   <input
                     type="password"
                     inputMode="numeric"
@@ -256,14 +256,14 @@ export function PaymentQrCode({
                       setPinInput(e.target.value);
                       setPinError(false);
                     }}
-                    placeholder="Enter owner number"
-                    className={`min-h-[44px] px-3.5 py-2 text-base rounded-lg border font-mono-tabular w-48 focus:outline-none ${
+                    placeholder="Owner number"
+                    className={`min-h-[36px] px-2.5 py-1 text-xs rounded-lg border font-mono-tabular w-36 focus:outline-none ${
                       pinError ? 'border-red-500 bg-red-50' : 'border-slate-300 bg-white'
                     }`}
                   />
                   <button
                     type="submit"
-                    className="min-h-[44px] px-4 py-2 bg-blue-600 text-white text-base font-extrabold rounded-lg cursor-pointer"
+                    className="min-h-[36px] px-3 py-1 bg-blue-600 text-white text-xs font-bold rounded-lg cursor-pointer"
                   >
                     Unlock
                   </button>

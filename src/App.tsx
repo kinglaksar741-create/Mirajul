@@ -339,70 +339,74 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col">
-      {/* Top Bar Contract: 3 Zones (Brand — Nav Links — Primary CTA) */}
-      <header className="sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-slate-200">
-        <div className="max-w-6xl mx-auto flex items-center justify-between gap-6 px-4 sm:px-6 py-4">
-          {/* Zone 1: Brand Title */}
-          <a
-            href="#"
-            className="font-display text-2xl sm:text-3xl font-extrabold tracking-tight text-blue-700 whitespace-nowrap shrink-0"
-          >
-            MIRAJ SMM STORE
-          </a>
+    <div className="min-h-screen bg-slate-100 text-slate-900">
+      {/* Unified Outer Layout Container:
+          - Mobile: 16px margin on top, bottom, left, and right
+          - Desktop: max-width 1200px, centered horizontally, 24px side padding
+          - All panels aligned to the exact same grid */}
+      <div className="site-layout-container flex flex-col gap-4 sm:gap-5">
+        {/* Top Bar Contract: 3 Zones (Brand — Nav Links — Primary CTA) */}
+        <header className="sticky top-[16px] z-30 bg-white/95 backdrop-blur-md border border-slate-200 rounded-xl px-4 sm:px-5 py-3 shadow-xs">
+          <div className="flex items-center justify-between gap-4">
+            {/* Zone 1: Brand Title */}
+            <a
+              href="#"
+              className="font-display text-lg sm:text-xl font-bold tracking-tight text-blue-700 whitespace-nowrap shrink-0"
+            >
+              MIRAJ SMM STORE
+            </a>
 
-          {/* Zone 2: Single-Line Navigation Links */}
-          <nav className="hidden md:flex items-center gap-7 text-lg font-bold text-slate-800">
-            <a
-              href="#utr-balance-section"
-              className="hover:text-blue-700 hover:underline underline-offset-4 transition-colors whitespace-nowrap shrink-0"
-            >
-              QR Payment & UTR Balance
-            </a>
-            <a
-              href="#order-box"
-              className="hover:text-blue-700 hover:underline underline-offset-4 transition-colors whitespace-nowrap shrink-0"
-            >
-              Place Order
-            </a>
-            <a
-              href="#views-packages"
-              className="hover:text-blue-700 hover:underline underline-offset-4 transition-colors whitespace-nowrap shrink-0"
-            >
-              Views Price List
-            </a>
-            <a
-              href="#likes-packages"
-              className="hover:text-blue-700 hover:underline underline-offset-4 transition-colors whitespace-nowrap shrink-0"
-            >
-              Likes Price List
-            </a>
-          </nav>
+            {/* Zone 2: Single-Line Navigation Links */}
+            <nav className="hidden lg:flex items-center gap-6 text-sm font-semibold text-slate-700">
+              <a
+                href="#utr-balance-section"
+                className="hover:text-blue-700 hover:underline underline-offset-4 transition-colors whitespace-nowrap shrink-0"
+              >
+                QR Payment & UTR Balance
+              </a>
+              <a
+                href="#order-box"
+                className="hover:text-blue-700 hover:underline underline-offset-4 transition-colors whitespace-nowrap shrink-0"
+              >
+                Place Order
+              </a>
+              <a
+                href="#views-packages"
+                className="hover:text-blue-700 hover:underline underline-offset-4 transition-colors whitespace-nowrap shrink-0"
+              >
+                Views Price List
+              </a>
+              <a
+                href="#likes-packages"
+                className="hover:text-blue-700 hover:underline underline-offset-4 transition-colors whitespace-nowrap shrink-0"
+              >
+                Likes Price List
+              </a>
+            </nav>
 
-          {/* Zone 3: 1 Primary Action (Shows Individual UTR Balance) */}
-          <div className="flex items-center shrink-0">
-            <a
-              href="#utr-balance-section"
-              className="px-5 py-3 text-base sm:text-lg font-extrabold text-white bg-[#16a34a] hover:bg-[#15803d] rounded-xl transition-colors inline-flex items-center gap-2 whitespace-nowrap shrink-0"
-            >
-              <Wallet className="w-5 h-5 sm:w-6 sm:h-6" />
-              <span>
-                {activePaymentRecord
-                  ? `UTR Balance: ₹${currentUtrBalance.toLocaleString('en-IN')}`
-                  : 'Balance: ₹0'}
-              </span>
-            </a>
+            {/* Zone 3: 1 Primary Action (Shows Individual UTR Balance) */}
+            <div className="flex items-center shrink-0">
+              <a
+                href="#utr-balance-section"
+                className="px-3.5 py-2 text-xs sm:text-sm font-bold text-white bg-[#16a34a] hover:bg-[#15803d] rounded-lg transition-colors inline-flex items-center gap-1.5 whitespace-nowrap shrink-0"
+              >
+                <Wallet className="w-4 h-4" />
+                <span>
+                  {activePaymentRecord
+                    ? `UTR Balance: ₹${currentUtrBalance.toLocaleString('en-IN')}`
+                    : 'Balance: ₹0'}
+                </span>
+              </a>
+            </div>
           </div>
-        </div>
-      </header>
+        </header>
 
-      <main className="flex-1">
-        {/* Clean Blue Header Banner with Separate UTR Balance Card */}
-        <section className="bg-gradient-to-b from-blue-700 to-blue-800 text-white border-b border-blue-900/20">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 py-10 sm:py-12">
-            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+        <main className="flex flex-col gap-4 sm:gap-5">
+          {/* Aligned Blue Header Banner Panel with Separate UTR Balance Card */}
+          <section className="bg-gradient-to-b from-blue-700 to-blue-800 text-white rounded-xl border border-blue-900/20 p-5 sm:p-6">
+            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
               <div className="max-w-2xl">
-                <div className="flex flex-wrap items-center gap-2.5 text-base sm:text-xl font-bold text-blue-100 mb-3">
+                <div className="flex flex-wrap items-center gap-2 text-xs sm:text-sm font-semibold text-blue-100 mb-2">
                   <span>Instagram Views & Likes Promotion</span>
                   <span aria-hidden="true">·</span>
                   <span>Views: 5K = ₹5</span>
@@ -411,59 +415,57 @@ export default function App() {
                 </div>
 
                 <h1
-                  className="font-display text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight mb-4"
+                  className="font-display text-xl sm:text-3xl font-bold tracking-tight text-white leading-snug mb-2"
                   style={{ textWrap: 'balance' }}
                 >
                   Pay via QR Code & Enter UTR ID to Show Your Balance
                 </h1>
 
-                <p className="text-lg sm:text-xl text-blue-50 font-medium leading-relaxed">
+                <p className="text-sm sm:text-base text-blue-100 leading-relaxed">
                   Every customer payment is separate. If you pay ₹5 on our QR code and enter your
                   UTR ID, ₹5 will be shown in your balance.
                 </p>
               </div>
 
               {/* Active Individual UTR Balance Display */}
-              <div className="bg-white/10 backdrop-blur-sm border border-white/25 rounded-2xl p-6 sm:p-7 min-w-[300px]">
-                <div className="text-base sm:text-lg font-bold text-blue-100 mb-1">
+              <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-4 sm:p-5 min-w-[240px]">
+                <div className="text-xs sm:text-sm font-semibold text-blue-100 mb-0.5">
                   {activePaymentRecord
                     ? `Active UTR ID: ${activePaymentRecord.utr}`
                     : 'Enter UTR ID Below to Show Balance'}
                 </div>
-                <div className="font-mono-tabular text-4xl sm:text-5xl font-extrabold text-white my-2">
+                <div className="font-mono-tabular text-2xl sm:text-3xl font-bold text-white my-1">
                   ₹{currentUtrBalance.toLocaleString('en-IN')}
                 </div>
-                <div className="text-base sm:text-lg font-medium text-blue-100">
+                <div className="text-xs text-blue-100">
                   {activePaymentRecord
                     ? `Individual payment of ₹${activePaymentRecord.paidAmount.toLocaleString('en-IN')}`
                     : 'Each UTR ID shows its own separate payment balance'}
                 </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
 
-        {/* Section 1: Order Box + QR Code & UTR ID Balance Box */}
-        <section className="py-8 sm:py-12">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          {/* Section 1: Aligned 12-Column Grid — Order Box + QR Code & UTR ID Balance Box */}
+          <section>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-5 items-stretch">
               {/* Left 7 Columns: Place Your Instagram Order */}
-              <div id="order-box" className="lg:col-span-7">
+              <div id="order-box" className="lg:col-span-7 flex">
                 <form
                   onSubmit={handleOpenPaymentStep}
                   noValidate
-                  className="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8"
+                  className="w-full bg-white border border-slate-200 rounded-xl p-4 sm:p-6 flex flex-col justify-between"
                 >
-                  <div className="pb-5 mb-6 border-b border-slate-200 flex flex-wrap items-baseline justify-between gap-2">
+                  <div className="pb-4 mb-4 border-b border-slate-200 flex flex-wrap items-baseline justify-between gap-2">
                     <div>
-                      <div className="text-base sm:text-lg font-extrabold text-blue-700 mb-1">
+                      <div className="text-xs sm:text-sm font-bold text-blue-700 mb-0.5">
                         Step 1 · Select Your Instagram Package
                       </div>
-                      <h2 className="font-display text-2xl sm:text-4xl font-extrabold text-slate-900">
+                      <h2 className="font-display text-lg sm:text-2xl font-bold text-slate-900">
                         Place Your Instagram Order
                       </h2>
                     </div>
-                    <span className="font-mono-tabular text-base sm:text-lg font-extrabold text-blue-700">
+                    <span className="font-mono-tabular text-xs sm:text-sm font-bold text-blue-700">
                       {isViews
                         ? '5K Views = ₹5 · 10K Views = ₹10'
                         : '1K Likes = ₹25 · 2K Likes = ₹50'}
@@ -473,27 +475,27 @@ export default function App() {
                   {formError && (
                     <div
                       role="alert"
-                      className="mb-6 p-4 rounded-xl bg-red-50 border border-red-200 text-base sm:text-lg text-red-700 font-bold"
+                      className="mb-4 p-3 rounded-lg bg-red-50 border border-red-200 text-xs sm:text-sm text-red-700 font-semibold"
                     >
                       {formError}
                     </div>
                   )}
 
-                  <div className="space-y-7">
+                  <div className="space-y-5">
                     {/* Option 1: Choose Instagram Views or Instagram Likes */}
                     <div>
-                      <label className="block text-lg sm:text-xl font-extrabold text-slate-900 mb-3">
+                      <label className="block text-sm sm:text-base font-bold text-slate-900 mb-2">
                         1. Choose Service (Views or Likes)
                       </label>
                       <div
-                        className="grid grid-cols-2 gap-3.5"
+                        className="grid grid-cols-2 gap-3"
                         role="group"
                         aria-label="Choose Instagram Views or Instagram Likes"
                       >
                         <button
                           type="button"
                           onClick={() => handleSwitchService('Instagram Views')}
-                          className={`min-h-[68px] px-4 py-3.5 rounded-xl font-display text-lg sm:text-xl font-extrabold border transition-colors cursor-pointer flex flex-col items-center justify-center whitespace-nowrap shrink-0 ${
+                          className={`min-h-[52px] px-3 py-2.5 rounded-xl font-display text-sm sm:text-base font-bold border transition-colors cursor-pointer flex flex-col items-center justify-center whitespace-nowrap shrink-0 ${
                             isViews
                               ? 'bg-blue-600 border-blue-600 text-white'
                               : 'bg-slate-50 border-slate-300 text-slate-800 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700'
@@ -501,7 +503,7 @@ export default function App() {
                         >
                           <span>Instagram Views</span>
                           <span
-                            className={`text-sm sm:text-base font-mono-tabular font-bold mt-1 ${
+                            className={`text-xs font-mono-tabular font-medium mt-0.5 ${
                               isViews ? 'text-blue-100' : 'text-slate-600'
                             }`}
                           >
@@ -512,7 +514,7 @@ export default function App() {
                         <button
                           type="button"
                           onClick={() => handleSwitchService('Instagram Likes')}
-                          className={`min-h-[68px] px-4 py-3.5 rounded-xl font-display text-lg sm:text-xl font-extrabold border transition-colors cursor-pointer flex flex-col items-center justify-center whitespace-nowrap shrink-0 ${
+                          className={`min-h-[52px] px-3 py-2.5 rounded-xl font-display text-sm sm:text-base font-bold border transition-colors cursor-pointer flex flex-col items-center justify-center whitespace-nowrap shrink-0 ${
                             !isViews
                               ? 'bg-blue-600 border-blue-600 text-white'
                               : 'bg-slate-50 border-slate-300 text-slate-800 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700'
@@ -520,7 +522,7 @@ export default function App() {
                         >
                           <span>Instagram Likes</span>
                           <span
-                            className={`text-sm sm:text-base font-mono-tabular font-bold mt-1 ${
+                            className={`text-xs font-mono-tabular font-medium mt-0.5 ${
                               !isViews ? 'text-blue-100' : 'text-slate-600'
                             }`}
                           >
@@ -532,14 +534,14 @@ export default function App() {
 
                     {/* Option 2: Quantity Option */}
                     <div>
-                      <div className="flex flex-wrap items-center justify-between gap-1 mb-2.5">
+                      <div className="flex flex-wrap items-center justify-between gap-1 mb-1.5">
                         <label
                           htmlFor="quantity-input"
-                          className="block text-lg sm:text-xl font-extrabold text-slate-900"
+                          className="block text-sm sm:text-base font-bold text-slate-900"
                         >
                           2. Quantity Option ({selectedService})
                         </label>
-                        <span className="text-sm sm:text-base font-semibold text-slate-600">
+                        <span className="text-xs font-medium text-slate-600">
                           Tap a package or enter any quantity
                         </span>
                       </div>
@@ -557,11 +559,11 @@ export default function App() {
                           if (formError) setFormError(null);
                         }}
                         placeholder={isViews ? 'e.g. 5000' : 'e.g. 1000'}
-                        className="w-full min-h-[58px] px-4 py-3.5 rounded-xl border border-slate-300 bg-slate-50 text-slate-900 font-mono-tabular text-xl sm:text-2xl font-extrabold focus:outline-none focus:bg-white focus:border-blue-600"
+                        className="w-full min-h-[44px] px-3.5 py-2 rounded-xl border border-slate-300 bg-slate-50 text-slate-900 font-mono-tabular text-base sm:text-lg font-bold focus:outline-none focus:bg-white focus:border-blue-600"
                       />
 
                       {/* Quick Tap Package Buttons */}
-                      <div className="grid grid-cols-3 sm:grid-cols-5 gap-2.5 mt-3.5">
+                      <div className="grid grid-cols-3 sm:grid-cols-5 gap-2 mt-2.5">
                         {activePackages.map((pkg) => {
                           const isSelected = numericQuantity === pkg.quantity;
                           return (
@@ -572,7 +574,7 @@ export default function App() {
                                 setQuantityInput(String(pkg.quantity));
                                 setFormError(null);
                               }}
-                              className={`min-h-[52px] px-3 py-2.5 rounded-xl text-base sm:text-lg font-mono-tabular font-extrabold border transition-colors cursor-pointer whitespace-nowrap shrink-0 ${
+                              className={`min-h-[38px] px-2.5 py-1.5 rounded-lg text-xs sm:text-sm font-mono-tabular font-bold border transition-colors cursor-pointer whitespace-nowrap shrink-0 ${
                                 isSelected
                                   ? 'bg-blue-600 border-blue-600 text-white'
                                   : 'bg-slate-100 border-slate-200 text-slate-800 hover:bg-blue-50 hover:border-blue-300 hover:text-blue-700'
@@ -589,7 +591,7 @@ export default function App() {
                     <div>
                       <label
                         htmlFor="video-link-input"
-                        className="block text-lg sm:text-xl font-extrabold text-slate-900 mb-2.5"
+                        className="block text-sm sm:text-base font-bold text-slate-900 mb-1.5"
                       >
                         3. Video / Post Link Option
                       </label>
@@ -603,30 +605,30 @@ export default function App() {
                           if (formError) setFormError(null);
                         }}
                         placeholder="https://www.instagram.com/reel/..."
-                        className="w-full min-h-[58px] px-4 py-3.5 rounded-xl border border-slate-300 bg-slate-50 text-slate-900 text-lg sm:text-xl font-medium focus:outline-none focus:bg-white focus:border-blue-600"
+                        className="w-full min-h-[44px] px-3.5 py-2 rounded-xl border border-slate-300 bg-slate-50 text-slate-900 text-sm sm:text-base focus:outline-none focus:bg-white focus:border-blue-600"
                       />
-                      <p className="text-base sm:text-lg font-medium text-slate-600 mt-2">
+                      <p className="text-xs text-slate-600 mt-1">
                         Paste your public Instagram Reel or post link. No password needed.
                       </p>
                     </div>
 
                     {/* Option 4: Price Will Show */}
-                    <div className="p-5 sm:p-6 rounded-2xl bg-blue-50 border border-blue-200">
-                      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-blue-200/80">
+                    <div className="p-4 rounded-xl bg-blue-50 border border-blue-200">
+                      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-blue-200/80">
                         <div>
-                          <div className="text-base sm:text-lg font-extrabold text-blue-900">
+                          <div className="text-xs font-bold text-blue-800">
                             Selected {selectedService}
                           </div>
-                          <div className="font-mono-tabular text-3xl sm:text-4xl font-extrabold text-slate-900 mt-1">
+                          <div className="font-mono-tabular text-xl sm:text-2xl font-bold text-slate-900 mt-0.5">
                             {numericQuantity.toLocaleString('en-IN')} {unitWord}
                           </div>
-                          <div className="text-base sm:text-lg font-bold text-slate-800 mt-2">
+                          <div className="text-xs sm:text-sm font-medium text-slate-700 mt-1">
                             Your UTR Balance:{' '}
-                            <span className="font-mono-tabular font-extrabold text-emerald-700">
+                            <span className="font-mono-tabular font-bold text-emerald-700">
                               ₹{currentUtrBalance.toLocaleString('en-IN')}
                             </span>
                             {activePaymentRecord && (
-                              <span className="text-slate-700">
+                              <span className="text-slate-600">
                                 {' '}
                                 (UTR: {activePaymentRecord.utr})
                               </span>
@@ -635,25 +637,25 @@ export default function App() {
                         </div>
 
                         <div className="sm:text-right">
-                          <div className="text-base sm:text-lg font-extrabold text-blue-900">
+                          <div className="text-xs font-bold text-blue-800">
                             Price Will Show
                           </div>
-                          <div className="font-mono-tabular text-4xl sm:text-5xl font-extrabold text-blue-700 mt-1">
+                          <div className="font-mono-tabular text-2xl sm:text-3xl font-bold text-blue-700 mt-0.5">
                             ₹{calculatedPriceInr.toLocaleString('en-IN')}
                           </div>
                         </div>
                       </div>
 
                       {/* Optional: Enter Custom Amount in Rupees */}
-                      <div className="pt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                      <div className="pt-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
                         <label
                           htmlFor="rupees-budget-input"
-                          className="text-base sm:text-lg font-bold text-slate-900"
+                          className="text-xs sm:text-sm font-semibold text-slate-800"
                         >
                           Or enter how many Rupees (₹) you want to pay:
                         </label>
-                        <div className="relative w-full sm:w-48">
-                          <span className="absolute left-4 top-1/2 -translate-y-1/2 font-mono-tabular text-lg sm:text-xl font-extrabold text-slate-500">
+                        <div className="relative w-full sm:w-40">
+                          <span className="absolute left-3 top-1/2 -translate-y-1/2 font-mono-tabular text-sm font-bold text-slate-500">
                             ₹
                           </span>
                           <input
@@ -665,7 +667,7 @@ export default function App() {
                             value={calculatedPriceInr || ''}
                             onChange={(e) => handlePriceInputChange(e.target.value)}
                             placeholder={isViews ? '5' : '25'}
-                            className="w-full min-h-[52px] pl-9 pr-4 py-2.5 rounded-xl border border-blue-300 bg-white text-slate-900 font-mono-tabular text-lg sm:text-xl font-extrabold focus:outline-none focus:border-blue-600"
+                            className="w-full min-h-[38px] pl-7 pr-3 py-1.5 rounded-lg border border-blue-300 bg-white text-slate-900 font-mono-tabular text-sm sm:text-base font-bold focus:outline-none focus:border-blue-600"
                           />
                         </div>
                       </div>
@@ -674,9 +676,9 @@ export default function App() {
                     {/* Green Confirm Order Button */}
                     <button
                       type="submit"
-                      className="w-full min-h-[62px] py-4 px-6 bg-[#16a34a] hover:bg-[#15803d] active:scale-[0.99] text-white font-extrabold text-xl sm:text-2xl rounded-xl transition-all cursor-pointer flex items-center justify-center gap-3 whitespace-nowrap shrink-0"
+                      className="w-full min-h-[48px] py-3 px-5 bg-[#16a34a] hover:bg-[#15803d] active:scale-[0.99] text-white font-bold text-base sm:text-lg rounded-xl transition-all cursor-pointer flex items-center justify-center gap-2 whitespace-nowrap shrink-0"
                     >
-                      <QrCode className="w-7 h-7" />
+                      <QrCode className="w-5 h-5" />
                       <span>
                         Confirm Order (₹{calculatedPriceInr.toLocaleString('en-IN')})
                       </span>
@@ -686,219 +688,221 @@ export default function App() {
               </div>
 
               {/* Right 5 Columns: Scan QR Code & Enter UTR ID to Show Individual Balance */}
-              <div id="utr-balance-section" className="lg:col-span-5 space-y-6">
-                <div className="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8">
-                  <div className="pb-5 mb-5 border-b border-slate-200 text-center">
-                    <div className="text-base sm:text-lg font-extrabold text-blue-700 mb-1">
-                      Step 2 · Scan QR Code & Enter UTR ID
-                    </div>
-                    <h3 className="font-display text-2xl sm:text-3xl font-extrabold text-slate-900">
-                      Payment QR Code & UTR Balance
-                    </h3>
-                    <p className="text-base sm:text-lg font-medium text-slate-700 mt-2 leading-relaxed">
-                      Scan the QR code below, pay your amount (e.g. ₹5, ₹10, ₹25), and enter your{' '}
-                      <strong>UTR ID</strong> to show that exact amount in your balance.
-                    </p>
-                  </div>
-
-                  {/* QR Code with Owner Upload/Lock Control */}
-                  <div className="flex flex-col items-center justify-center mb-6">
-                    <PaymentQrCode sizeClassName="w-64 h-64 sm:w-72 sm:h-72" />
-                  </div>
-
-                  {/* Individual UTR Balance Form */}
-                  <form onSubmit={handleVerifyUtrPayment} noValidate className="space-y-5">
-                    <div>
-                      <label className="block text-lg sm:text-xl font-extrabold text-slate-900 mb-2.5">
-                        1. Select or Enter Amount Paid (₹)
-                      </label>
-                      <div className="grid grid-cols-3 sm:grid-cols-5 gap-2.5 mb-3">
-                        {PAYMENT_AMOUNTS.map((amt) => {
-                          const active = numericPaidAmount === amt;
-                          return (
-                            <button
-                              key={amt}
-                              type="button"
-                              onClick={() => {
-                                setSelectedPaidAmount(String(amt));
-                                setDepositError(null);
-                              }}
-                              className={`min-h-[48px] px-3 py-2 rounded-xl font-mono-tabular text-base sm:text-lg font-extrabold border transition-colors cursor-pointer ${
-                                active
-                                  ? 'bg-blue-600 border-blue-600 text-white'
-                                  : 'bg-slate-100 border-slate-200 text-slate-800 hover:bg-blue-50'
-                              }`}
-                            >
-                              ₹{amt}
-                            </button>
-                          );
-                        })}
+              <div id="utr-balance-section" className="lg:col-span-5 flex">
+                <div className="w-full bg-white border border-slate-200 rounded-xl p-4 sm:p-6 flex flex-col justify-between">
+                  <div>
+                    <div className="pb-4 mb-4 border-b border-slate-200 text-center">
+                      <div className="text-xs sm:text-sm font-bold text-blue-700 mb-0.5">
+                        Step 2 · Scan QR Code & Enter UTR ID
                       </div>
-
-                      <div className="relative">
-                        <span className="absolute left-4 top-1/2 -translate-y-1/2 font-mono-tabular text-lg sm:text-xl font-extrabold text-slate-500">
-                          ₹
-                        </span>
-                        <input
-                          type="number"
-                          inputMode="numeric"
-                          min={5}
-                          value={selectedPaidAmount}
-                          onChange={(e) => setSelectedPaidAmount(e.target.value)}
-                          placeholder="5"
-                          className="w-full min-h-[54px] pl-9 pr-4 py-3 rounded-xl border border-slate-300 bg-slate-50 text-slate-900 font-mono-tabular text-lg sm:text-xl font-extrabold focus:outline-none focus:bg-white focus:border-blue-600"
-                        />
-                      </div>
+                      <h3 className="font-display text-lg sm:text-xl font-bold text-slate-900">
+                        Payment QR Code & UTR Balance
+                      </h3>
+                      <p className="text-xs sm:text-sm text-slate-600 mt-1 leading-relaxed">
+                        Scan the QR code below, pay your amount (e.g. ₹5, ₹10, ₹25), and enter your{' '}
+                        <strong>UTR ID</strong> to show that exact amount in your balance.
+                      </p>
                     </div>
 
-                    <div>
-                      <label
-                        htmlFor="utr-id-input"
-                        className="block text-lg sm:text-xl font-extrabold text-slate-900 mb-2.5"
-                      >
-                        2. Enter Your Payment UTR ID
-                      </label>
-                      <input
-                        id="utr-id-input"
-                        type="text"
-                        required
-                        value={utrInput}
-                        onChange={(e) => {
-                          setUtrInput(e.target.value);
-                          if (depositError) setDepositError(null);
-                        }}
-                        placeholder="Enter 12-digit UTR ID after paying"
-                        className="w-full min-h-[54px] px-4 py-3 rounded-xl border border-slate-300 bg-slate-50 text-slate-900 font-mono-tabular text-lg sm:text-xl font-bold focus:outline-none focus:bg-white focus:border-blue-600"
-                      />
+                    {/* QR Code with Owner Upload/Lock Control */}
+                    <div className="flex flex-col items-center justify-center mb-4">
+                      <PaymentQrCode sizeClassName="w-48 h-48 sm:w-52 sm:h-52" />
                     </div>
 
-                    {depositError && (
-                      <div
-                        role="alert"
-                        className="p-4 rounded-xl bg-red-50 border border-red-200 text-base text-red-700 font-bold"
-                      >
-                        {depositError}
-                      </div>
-                    )}
+                    {/* Individual UTR Balance Form */}
+                    <form onSubmit={handleVerifyUtrPayment} noValidate className="space-y-4">
+                      <div>
+                        <label className="block text-xs sm:text-sm font-bold text-slate-900 mb-1.5">
+                          1. Select or Enter Amount Paid (₹)
+                        </label>
+                        <div className="grid grid-cols-3 sm:grid-cols-5 gap-1.5 mb-2">
+                          {PAYMENT_AMOUNTS.map((amt) => {
+                            const active = numericPaidAmount === amt;
+                            return (
+                              <button
+                                key={amt}
+                                type="button"
+                                onClick={() => {
+                                  setSelectedPaidAmount(String(amt));
+                                  setDepositError(null);
+                                }}
+                                className={`min-h-[36px] px-2 py-1 rounded-lg font-mono-tabular text-xs sm:text-sm font-bold border transition-colors cursor-pointer ${
+                                  active
+                                    ? 'bg-blue-600 border-blue-600 text-white'
+                                    : 'bg-slate-100 border-slate-200 text-slate-800 hover:bg-blue-50'
+                                }`}
+                              >
+                                ₹{amt}
+                              </button>
+                            );
+                          })}
+                        </div>
 
-                    {depositSuccessMsg && (
-                      <div
-                        role="status"
-                        className="p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-base text-emerald-900 font-extrabold"
-                      >
-                        {depositSuccessMsg}
+                        <div className="relative">
+                          <span className="absolute left-3 top-1/2 -translate-y-1/2 font-mono-tabular text-sm sm:text-base font-bold text-slate-500">
+                            ₹
+                          </span>
+                          <input
+                            type="number"
+                            inputMode="numeric"
+                            min={5}
+                            value={selectedPaidAmount}
+                            onChange={(e) => setSelectedPaidAmount(e.target.value)}
+                            placeholder="5"
+                            className="w-full min-h-[42px] pl-7 pr-3.5 py-2 rounded-xl border border-slate-300 bg-slate-50 text-slate-900 font-mono-tabular text-sm sm:text-base font-bold focus:outline-none focus:bg-white focus:border-blue-600"
+                          />
+                        </div>
                       </div>
-                    )}
 
-                    <button
-                      type="submit"
-                      className="w-full min-h-[58px] py-4 px-5 bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-lg sm:text-xl rounded-xl transition-colors cursor-pointer flex items-center justify-center gap-2.5 whitespace-nowrap"
-                    >
-                      <Wallet className="w-6 h-6" />
-                      <span>
-                        Submit UTR ID — Show ₹{numericPaidAmount.toLocaleString('en-IN')}
-                      </span>
-                    </button>
-                  </form>
-
-                  {/* Active Individual UTR Balance Box */}
-                  <div className="mt-6 p-5 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-between">
-                    <div>
-                      <div className="text-base sm:text-lg font-extrabold text-emerald-950">
-                        {activePaymentRecord
-                          ? `UTR ID: ${activePaymentRecord.utr}`
-                          : 'Current UTR Balance'}
-                      </div>
-                      <div className="text-sm sm:text-base font-semibold text-emerald-800 mt-0.5">
-                        {activePaymentRecord
-                          ? 'Individual payment verified'
-                          : 'Submit UTR ID above to show balance'}
-                      </div>
-                    </div>
-                    <div className="font-mono-tabular text-3xl sm:text-4xl font-extrabold text-emerald-700">
-                      ₹{currentUtrBalance.toLocaleString('en-IN')}
-                    </div>
-                  </div>
-
-                  {/* Check Existing UTR Balance Lookup */}
-                  {utrPayments.length > 0 && (
-                    <div className="mt-6 pt-5 border-t border-slate-200">
-                      <form onSubmit={handleCheckUtrBalance} className="flex gap-2.5 mb-4">
-                        <input
-                          type="text"
-                          value={utrLookupInput}
-                          onChange={(e) => setUtrLookupInput(e.target.value)}
-                          placeholder="Check balance by UTR ID..."
-                          className="flex-1 min-h-[48px] px-4 py-2.5 rounded-xl border border-slate-300 bg-slate-50 text-base font-mono-tabular font-bold focus:outline-none focus:border-blue-600"
-                        />
-                        <button
-                          type="submit"
-                          className="min-h-[48px] px-4 py-2.5 bg-slate-800 hover:bg-slate-900 text-white text-base font-extrabold rounded-xl inline-flex items-center gap-1.5 cursor-pointer whitespace-nowrap"
+                      <div>
+                        <label
+                          htmlFor="utr-id-input"
+                          className="block text-xs sm:text-sm font-bold text-slate-900 mb-1.5"
                         >
-                          <Search className="w-5 h-5" />
-                          <span>Check UTR</span>
-                        </button>
-                      </form>
-
-                      <div className="text-base font-extrabold text-slate-800 mb-2.5">
-                        Separate Individual UTR Payments (Tap to Select)
+                          2. Enter Your Payment UTR ID
+                        </label>
+                        <input
+                          id="utr-id-input"
+                          type="text"
+                          required
+                          value={utrInput}
+                          onChange={(e) => {
+                            setUtrInput(e.target.value);
+                            if (depositError) setDepositError(null);
+                          }}
+                          placeholder="Enter 12-digit UTR ID after paying"
+                          className="w-full min-h-[42px] px-3.5 py-2 rounded-xl border border-slate-300 bg-slate-50 text-slate-900 font-mono-tabular text-sm sm:text-base focus:outline-none focus:bg-white focus:border-blue-600"
+                        />
                       </div>
-                      <div className="space-y-2.5">
-                        {utrPayments.slice(0, 5).map((item) => {
-                          const isCurrent =
-                            activePaymentRecord && activePaymentRecord.utr === item.utr;
-                          return (
-                            <button
-                              key={item.utr}
-                              type="button"
-                              onClick={() => {
-                                setActiveUtr(item.utr);
-                                setDepositSuccessMsg(
-                                  `Selected UTR ID ${item.utr} — Balance: ₹${item.remainingBalance.toLocaleString('en-IN')}`
-                                );
-                              }}
-                              className={`w-full p-3.5 rounded-xl border text-left flex items-center justify-between text-base transition-colors cursor-pointer ${
-                                isCurrent
-                                  ? 'bg-blue-50 border-blue-500 text-blue-900'
-                                  : 'bg-slate-50 border-slate-200 text-slate-800 hover:bg-slate-100'
-                              }`}
-                            >
-                              <div>
-                                <span className="font-mono-tabular font-extrabold">
-                                  UTR: {item.utr}
-                                </span>
-                                <span className="text-slate-600 font-medium"> · {item.time}</span>
-                              </div>
-                              <span className="font-mono-tabular font-extrabold text-emerald-700">
-                                Balance: ₹{item.remainingBalance.toLocaleString('en-IN')}
-                              </span>
-                            </button>
-                          );
-                        })}
+
+                      {depositError && (
+                        <div
+                          role="alert"
+                          className="p-3 rounded-lg bg-red-50 border border-red-200 text-xs text-red-700 font-semibold"
+                        >
+                          {depositError}
+                        </div>
+                      )}
+
+                      {depositSuccessMsg && (
+                        <div
+                          role="status"
+                          className="p-3 rounded-lg bg-emerald-50 border border-emerald-200 text-xs text-emerald-800 font-bold"
+                        >
+                          {depositSuccessMsg}
+                        </div>
+                      )}
+
+                      <button
+                        type="submit"
+                        className="w-full min-h-[44px] py-2.5 px-4 bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm sm:text-base rounded-xl transition-colors cursor-pointer flex items-center justify-center gap-2 whitespace-nowrap"
+                      >
+                        <Wallet className="w-4 h-4" />
+                        <span>
+                          Submit UTR ID — Show ₹{numericPaidAmount.toLocaleString('en-IN')}
+                        </span>
+                      </button>
+                    </form>
+
+                    {/* Active Individual UTR Balance Box */}
+                    <div className="mt-4 p-3.5 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-between">
+                      <div>
+                        <div className="text-xs sm:text-sm font-bold text-emerald-900">
+                          {activePaymentRecord
+                            ? `UTR ID: ${activePaymentRecord.utr}`
+                            : 'Current UTR Balance'}
+                        </div>
+                        <div className="text-xs text-emerald-700 mt-0.5">
+                          {activePaymentRecord
+                            ? 'Individual payment verified'
+                            : 'Submit UTR ID above to show balance'}
+                        </div>
+                      </div>
+                      <div className="font-mono-tabular text-xl sm:text-2xl font-bold text-emerald-700">
+                        ₹{currentUtrBalance.toLocaleString('en-IN')}
                       </div>
                     </div>
-                  )}
+
+                    {/* Check Existing UTR Balance Lookup */}
+                    {utrPayments.length > 0 && (
+                      <div className="mt-4 pt-4 border-t border-slate-200">
+                        <form onSubmit={handleCheckUtrBalance} className="flex gap-2 mb-3">
+                          <input
+                            type="text"
+                            value={utrLookupInput}
+                            onChange={(e) => setUtrLookupInput(e.target.value)}
+                            placeholder="Check balance by UTR ID..."
+                            className="flex-1 min-h-[38px] px-3 py-1.5 rounded-lg border border-slate-300 bg-slate-50 text-xs font-mono-tabular focus:outline-none focus:border-blue-600"
+                          />
+                          <button
+                            type="submit"
+                            className="min-h-[38px] px-3 py-1.5 bg-slate-800 hover:bg-slate-900 text-white text-xs font-bold rounded-lg inline-flex items-center gap-1 cursor-pointer whitespace-nowrap"
+                          >
+                            <Search className="w-3.5 h-3.5" />
+                            <span>Check UTR</span>
+                          </button>
+                        </form>
+
+                        <div className="text-xs font-bold text-slate-700 mb-2">
+                          Separate Individual UTR Payments (Tap to Select)
+                        </div>
+                        <div className="space-y-2">
+                          {utrPayments.slice(0, 5).map((item) => {
+                            const isCurrent =
+                              activePaymentRecord && activePaymentRecord.utr === item.utr;
+                            return (
+                              <button
+                                key={item.utr}
+                                type="button"
+                                onClick={() => {
+                                  setActiveUtr(item.utr);
+                                  setDepositSuccessMsg(
+                                    `Selected UTR ID ${item.utr} — Balance: ₹${item.remainingBalance.toLocaleString('en-IN')}`
+                                  );
+                                }}
+                                className={`w-full p-2.5 rounded-lg border text-left flex items-center justify-between text-xs transition-colors cursor-pointer ${
+                                  isCurrent
+                                    ? 'bg-blue-50 border-blue-500 text-blue-900'
+                                    : 'bg-slate-50 border-slate-200 text-slate-800 hover:bg-slate-100'
+                                }`}
+                              >
+                                <div>
+                                  <span className="font-mono-tabular font-bold">
+                                    UTR: {item.utr}
+                                  </span>
+                                  <span className="text-slate-500"> · {item.time}</span>
+                                </div>
+                                <span className="font-mono-tabular font-bold text-emerald-700">
+                                  Balance: ₹{item.remainingBalance.toLocaleString('en-IN')}
+                                </span>
+                              </button>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    )}
+                  </div>
 
                   {/* Order Summary Preview */}
-                  <div className="mt-6 pt-5 border-t border-slate-200">
-                    <div className="flex items-center justify-between mb-2.5">
-                      <span className="text-base font-extrabold text-slate-800">
+                  <div className="mt-4 pt-4 border-t border-slate-200">
+                    <div className="flex items-center justify-between mb-1.5">
+                      <span className="text-xs font-semibold text-slate-600">
                         Order Summary (+91 6002191384)
                       </span>
-                      <div className="flex items-center gap-4">
+                      <div className="flex items-center gap-3">
                         <button
                           type="button"
                           onClick={handleCopyMessage}
-                          className="text-base font-extrabold text-blue-700 hover:underline inline-flex items-center gap-1 cursor-pointer"
+                          className="text-xs font-semibold text-blue-700 hover:underline inline-flex items-center gap-1 cursor-pointer"
                         >
                           {copiedPreview ? (
                             <>
-                              <Check className="w-4 h-4 text-emerald-600" />
+                              <Check className="w-3.5 h-3.5 text-emerald-600" />
                               <span className="text-emerald-700">Copied</span>
                             </>
                           ) : (
                             <>
-                              <Copy className="w-4 h-4" />
+                              <Copy className="w-3.5 h-3.5" />
                               <span>Copy</span>
                             </>
                           )}
@@ -907,40 +911,38 @@ export default function App() {
                           href={whatsappUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-base text-[#16a34a] font-extrabold hover:underline inline-flex items-center gap-1"
+                          className="text-xs text-[#16a34a] font-bold hover:underline inline-flex items-center gap-1"
                         >
                           <span>Confirm Order Link</span>
-                          <ExternalLink className="w-4 h-4" />
+                          <ExternalLink className="w-3 h-3" />
                         </a>
                       </div>
                     </div>
-                    <pre className="p-4 rounded-xl bg-slate-100 border border-slate-200 text-base font-mono-tabular font-semibold text-slate-900 whitespace-pre-wrap break-all leading-relaxed">
+                    <pre className="p-3 rounded-lg bg-slate-100 border border-slate-200 text-xs font-mono-tabular text-slate-800 whitespace-pre-wrap break-all leading-relaxed">
                       {whatsappMessage}
                     </pre>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
 
-        {/* Section 2: Public Instagram Views & Instagram Likes Price Lists Side-by-Side Below */}
-        <section className="pb-14">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+          {/* Section 2: Public Instagram Views & Instagram Likes Price Lists Side-by-Side Below */}
+          <section>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-5 items-stretch">
               {/* Instagram Views Price List (5K = ₹5 to 100K = ₹100) */}
               <div
                 id="views-packages"
-                className="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8"
+                className="bg-white border border-slate-200 rounded-xl p-4 sm:p-6 flex flex-col"
               >
-                <div className="mb-6">
-                  <div className="text-base sm:text-lg font-extrabold text-blue-700 mb-1">
+                <div className="mb-4">
+                  <div className="text-xs font-bold text-blue-700 mb-0.5">
                     Public Rate Chart · 01
                   </div>
-                  <h2 className="font-display text-2xl sm:text-3xl font-extrabold text-slate-900">
+                  <h2 className="font-display text-lg sm:text-xl font-bold text-slate-900">
                     Instagram Views Price List
                   </h2>
-                  <p className="text-base sm:text-lg font-medium text-slate-700 mt-1">
+                  <p className="text-xs sm:text-sm text-slate-600 mt-0.5">
                     5K Views = ₹5 · 10K Views = ₹10 · Tap any package to order.
                   </p>
                 </div>
@@ -952,31 +954,31 @@ export default function App() {
                     return (
                       <div
                         key={pkg.id}
-                        className={`p-4 sm:px-5 flex items-center justify-between gap-4 transition-colors ${
+                        className={`p-3 sm:px-4 flex items-center justify-between gap-3 transition-colors ${
                           isSelected ? 'bg-blue-50/90' : 'bg-white hover:bg-slate-50'
                         }`}
                       >
                         <div>
-                          <div className="font-display text-lg sm:text-xl font-extrabold text-slate-900">
+                          <div className="font-display text-sm sm:text-base font-bold text-slate-900">
                             {pkg.label}
                           </div>
-                          <div className="text-base font-semibold text-slate-700 font-mono-tabular">
+                          <div className="text-xs text-slate-600 font-mono-tabular">
                             {pkg.quantity.toLocaleString('en-IN')} Instagram Views
                           </div>
                         </div>
 
-                        <div className="flex items-center gap-4">
+                        <div className="flex items-center gap-3">
                           <div className="text-right">
-                            <div className="font-mono-tabular text-2xl sm:text-3xl font-extrabold text-blue-700">
+                            <div className="font-mono-tabular text-base sm:text-lg font-bold text-blue-700">
                               ₹{pkg.priceInr}
                             </div>
-                            <div className="text-sm font-bold text-slate-600">Rupees</div>
+                            <div className="text-[11px] font-medium text-slate-500">Rupees</div>
                           </div>
 
                           <button
                             type="button"
                             onClick={() => handleSelectPackage(pkg)}
-                            className={`min-h-[48px] px-5 py-2.5 rounded-xl text-base sm:text-lg font-extrabold transition-colors cursor-pointer whitespace-nowrap shrink-0 ${
+                            className={`min-h-[36px] px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-bold transition-colors cursor-pointer whitespace-nowrap shrink-0 ${
                               isSelected
                                 ? 'bg-[#16a34a] text-white'
                                 : 'bg-blue-600 hover:bg-blue-700 text-white'
@@ -994,16 +996,16 @@ export default function App() {
               {/* Instagram Likes Price List (1K = ₹25, 2K = ₹50, 3K = ₹75 ... 10K = ₹250) */}
               <div
                 id="likes-packages"
-                className="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8"
+                className="bg-white border border-slate-200 rounded-xl p-4 sm:p-6 flex flex-col"
               >
-                <div className="mb-6">
-                  <div className="text-base sm:text-lg font-extrabold text-blue-700 mb-1">
+                <div className="mb-4">
+                  <div className="text-xs font-bold text-blue-700 mb-0.5">
                     Public Rate Chart · 02
                   </div>
-                  <h2 className="font-display text-2xl sm:text-3xl font-extrabold text-slate-900">
+                  <h2 className="font-display text-lg sm:text-xl font-bold text-slate-900">
                     Instagram Likes Price List
                   </h2>
-                  <p className="text-base sm:text-lg font-medium text-slate-700 mt-1">
+                  <p className="text-xs sm:text-sm text-slate-600 mt-0.5">
                     1K Likes = ₹25 · 2K Likes = ₹50 · 3K Likes = ₹75 · Tap any package to order.
                   </p>
                 </div>
@@ -1015,31 +1017,31 @@ export default function App() {
                     return (
                       <div
                         key={pkg.id}
-                        className={`p-4 sm:px-5 flex items-center justify-between gap-4 transition-colors ${
+                        className={`p-3 sm:px-4 flex items-center justify-between gap-3 transition-colors ${
                           isSelected ? 'bg-blue-50/90' : 'bg-white hover:bg-slate-50'
                         }`}
                       >
                         <div>
-                          <div className="font-display text-lg sm:text-xl font-extrabold text-slate-900">
+                          <div className="font-display text-sm sm:text-base font-bold text-slate-900">
                             {pkg.label}
                           </div>
-                          <div className="text-base font-semibold text-slate-700 font-mono-tabular">
+                          <div className="text-xs text-slate-600 font-mono-tabular">
                             {pkg.quantity.toLocaleString('en-IN')} Instagram Likes
                           </div>
                         </div>
 
-                        <div className="flex items-center gap-4">
+                        <div className="flex items-center gap-3">
                           <div className="text-right">
-                            <div className="font-mono-tabular text-2xl sm:text-3xl font-extrabold text-blue-700">
+                            <div className="font-mono-tabular text-base sm:text-lg font-bold text-blue-700">
                               ₹{pkg.priceInr}
                             </div>
-                            <div className="text-sm font-bold text-slate-600">Rupees</div>
+                            <div className="text-[11px] font-medium text-slate-500">Rupees</div>
                           </div>
 
                           <button
                             type="button"
                             onClick={() => handleSelectPackage(pkg)}
-                            className={`min-h-[48px] px-5 py-2.5 rounded-xl text-base sm:text-lg font-extrabold transition-colors cursor-pointer whitespace-nowrap shrink-0 ${
+                            className={`min-h-[36px] px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-bold transition-colors cursor-pointer whitespace-nowrap shrink-0 ${
                               isSelected
                                 ? 'bg-[#16a34a] text-white'
                                 : 'bg-blue-600 hover:bg-blue-700 text-white'
@@ -1054,53 +1056,70 @@ export default function App() {
                 </div>
               </div>
             </div>
+          </section>
+        </main>
+
+        {/* Aligned Quiet Footer Panel */}
+        <footer className="bg-slate-900 text-slate-200 rounded-xl p-4 sm:px-6 border border-slate-800 text-xs sm:text-sm">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-2">
+            <div className="font-display font-bold text-white text-sm">
+              © 2026 MIRAJ SMM STORE
+            </div>
+            <div className="flex flex-wrap items-center justify-center gap-2">
+              <span>Instagram Views & Likes Promotion</span>
+              <span aria-hidden="true">·</span>
+              <span>Support: +91 6002191384</span>
+            </div>
           </div>
-        </section>
-      </main>
+        </footer>
+      </div>
 
       {/* QR Code + UTR ID Payment Popup when Customer Clicks Confirm Order */}
       {showQrModal && (
         <div
-          className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4"
+          className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-[16px]"
           role="dialog"
           aria-modal="true"
           aria-labelledby="qr-modal-title"
         >
-          <div className="bg-white border border-slate-200 rounded-2xl max-w-md w-full p-6 sm:p-7 shadow-xl relative">
+          <div className="bg-white border border-slate-200 rounded-2xl max-w-sm w-full p-5 shadow-xl relative">
             <button
               type="button"
               onClick={() => setShowQrModal(false)}
-              className="absolute top-4 right-4 w-11 h-11 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-700 cursor-pointer"
+              className="absolute top-3.5 right-3.5 w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-700 cursor-pointer"
               aria-label="Close payment window"
             >
-              <X className="w-6 h-6" />
+              <X className="w-5 h-5" />
             </button>
 
-            <div className="text-center mb-4">
-              <div className="text-base font-extrabold text-blue-700 mb-1">
+            <div className="text-center mb-3">
+              <div className="text-xs font-bold text-blue-700 mb-0.5">
                 Scan QR Code & Enter UTR ID
               </div>
-              <h3 id="qr-modal-title" className="font-display text-2xl sm:text-3xl font-extrabold text-slate-900">
+              <h3 id="qr-modal-title" className="font-display text-lg sm:text-xl font-bold text-slate-900">
                 Pay ₹{calculatedPriceInr.toLocaleString('en-IN')} for{' '}
                 {numericQuantity.toLocaleString('en-IN')} {unitWord}
               </h3>
-              <p className="text-base font-medium text-slate-700 mt-1.5">
+              <p className="text-xs text-slate-600 mt-1">
                 Scan the QR code below, pay ₹{calculatedPriceInr.toLocaleString('en-IN')}, enter your
                 UTR ID, and tap Confirm Order.
               </p>
             </div>
 
-            <div className="flex flex-col items-center my-4">
-              <PaymentQrCode sizeClassName="w-64 h-64" showUploadControl={false} />
-              <div className="mt-3.5 px-5 py-2 rounded-xl bg-blue-50 border border-blue-200 font-mono-tabular text-lg sm:text-xl font-extrabold text-blue-900">
+            <div className="flex flex-col items-center my-3">
+              <PaymentQrCode
+                sizeClassName="w-48 h-48"
+                showUploadControl={false}
+              />
+              <div className="mt-2.5 px-3.5 py-1.5 rounded-lg bg-blue-50 border border-blue-200 font-mono-tabular text-xs sm:text-sm font-bold text-blue-900">
                 Amount to Pay: ₹{calculatedPriceInr.toLocaleString('en-IN')}
               </div>
             </div>
 
-            <div className="mb-5">
+            <div className="mb-4">
               <label
                 htmlFor="modal-payment-utr"
-                className="block text-lg font-extrabold text-slate-900 mb-2"
+                className="block text-xs sm:text-sm font-bold text-slate-900 mb-1"
               >
                 Enter Your Payment UTR ID
               </label>
@@ -1110,35 +1129,21 @@ export default function App() {
                 value={utrInput}
                 onChange={(e) => setUtrInput(e.target.value)}
                 placeholder="Enter 12-digit UTR ID"
-                className="w-full min-h-[54px] px-4 py-3 rounded-xl border border-slate-300 bg-slate-50 text-slate-900 font-mono-tabular text-lg font-bold focus:outline-none focus:bg-white focus:border-blue-600"
+                className="w-full min-h-[42px] px-3 py-2 rounded-xl border border-slate-300 bg-slate-50 text-slate-900 font-mono-tabular text-sm font-bold focus:outline-none focus:bg-white focus:border-blue-600"
               />
             </div>
 
             <button
               type="button"
               onClick={handleFinalConfirmOrder}
-              className="w-full min-h-[58px] py-4 px-5 bg-[#16a34a] hover:bg-[#15803d] text-white font-extrabold text-xl rounded-xl transition-colors cursor-pointer flex items-center justify-center gap-2.5 whitespace-nowrap"
+              className="w-full min-h-[46px] py-2.5 px-4 bg-[#16a34a] hover:bg-[#15803d] text-white font-bold text-base rounded-xl transition-colors cursor-pointer flex items-center justify-center gap-2 whitespace-nowrap"
             >
-              <Check className="w-6 h-6" />
+              <Check className="w-5 h-5" />
               <span>Confirm Order</span>
             </button>
           </div>
         </div>
       )}
-
-      {/* Quiet Footer */}
-      <footer className="bg-slate-900 text-slate-200 py-8 border-t border-slate-800 text-base">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="font-display font-extrabold text-white text-lg">
-            © 2026 MIRAJ SMM STORE
-          </div>
-          <div className="flex flex-wrap items-center justify-center gap-2 font-semibold">
-            <span>Instagram Views & Likes Promotion</span>
-            <span aria-hidden="true">·</span>
-            <span>Support: +91 6002191384</span>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }
